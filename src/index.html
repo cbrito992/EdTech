@@ -1,66 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso Interativo - Fase 1</title>
-    <link rel="stylesheet" href="src/css/style.css">
+    <title>Curso Interativo - Nível 1</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Fontes opcionais -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <main class="container">
-        <header class="intro-section">
-            <h1>Bem-vindo ao Módulo 1</h1>
-            <p>Prepare-se para uma jornada de aprendizado. Assista ao briefing abaixo.</p>
-        </header>
+    <!-- NAVBAR SIMPLES -->
+    <header class="site-header-mini">
+        <nav class="mini-nav">
+            <a href="#intro" class="mini-item">Início</a>
+            <a href="#video" class="mini-item">Vídeo</a>
+            <a href="#comic" class="mini-item">HQ</a>
+            <a href="#game" class="mini-item">Jogo</a>
+            <a href="#reward" class="mini-item">Recompensa</a>
+        </nav>
+    </header>
 
-        <hr>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container app-shell">
 
-        <section class="video-section">
+        <!-- INTRO -->
+        <section id="intro" class="card intro-card">
+            <h1>Curso de Interpretação Textual – Nível 1</h1>
+            <p>Bem-vindo! Aqui você vai treinar leitura, compreensão e interpretação de textos de forma leve e prática.</p>
+            <p>Leia o texto, assista ao vídeo, faça o desafio no jogo e desbloqueie a continuação da HQ como recompensa.</p>
+        </section>
+
+        <!-- VÍDEO -->
+        <section id="video" class="card">
+            <h2>Vídeo de Apresentação</h2>
             <div class="video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe
+                    src="https://www.youtube.com/embed/ysd26gO6HIU"
+                    title="Briefing do curso"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
             </div>
         </section>
 
-        <section class="comic-section">
-            <h2>A Missão Começa...</h2>
-            <div class="comic-container">
-                <div class="comic-page">
-                    <img src="https://placehold.co/600x400?text=HQ+Parte+1" alt="Primeira parte da história em quadrinhos">
-                </div>
+        <!-- HQ / TEXTO -->
+        <section id="comic" class="card">
+            <h2>A missão começa...</h2>
+            <p>Leia a primeira parte da história em quadrinhos. Ela traz o contexto da missão que você precisa cumprir.</p>
+
+            <div class="comic-wrapper">
+                <img src="https://placehold.co/800x450?text=HQ+Parte+1" alt="Primeira parte da HQ">
             </div>
         </section>
 
-        <section class="game-section">
-            <h2>Desafio Prático</h2>
-            <p>Complete o desafio para descobrir o final da história!</p>
+        <!-- GAME -->
+        <section id="game" class="card">
+            <h2>Desafio interativo</h2>
+            <p>Em breve aqui entra o jogo em HTML. Por enquanto, use o botão abaixo para simular que venceu o desafio.</p>
 
-            <div id="game-canvas">
+            <div class="game-area">
                 <div class="game-placeholder">
-                    <p>🎮 Área do Jogo</p>
-                    <button id="btn-simulate-win" class="btn-primary">Simular Vitória (Dev)</button>
+                    <p>🎮 Área do Jogo (HTML, canvas, etc.)</p>
+                    <button id="btn-simulate-win" class="btn-primary">
+                        Simular vitória (dev)
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section id="locked-content" class="comic-section hidden">
-            <div class="unlock-animation">
-                <h2>🔓 Conteúdo Desbloqueado!</h2>
-                <div class="comic-container">
-                    <div class="comic-page">
-                        <img src="https://placehold.co/600x400/222/fff?text=HQ+Parte+2+(Segredo)" alt="Segunda parte da história em quadrinhos">
-                    </div>
-                </div>
+        <!-- RECOMPENSA / HQ 2 -->
+        <section id="reward" class="card hidden">
+            <h2>🎁 Recompensa desbloqueada!</h2>
+            <p>Parabéns! Você concluiu o desafio e desbloqueou a continuação da história.</p>
+
+            <div class="comic-wrapper">
+                <img src="https://placehold.co/800x450/222/fff?text=HQ+Parte+2" alt="Segunda parte da HQ (secreta)">
             </div>
 
-            <div class="next-level-wrapper">
-                <a href="nivel-2.html" class="btn-next">Ir para o Próximo Nível 🚀</a>
-            </div>
+            <a href="#" class="btn-next">Ir para o próximo nível 🚀</a>
         </section>
 
     </main>
 
-    <script src="src/js/game.js"></script>
-    <script src="src/js/main.js"></script>
+    <!-- JS -->
+    <script src="/js/main.js"></script>
+    <script src="/js/game.js"></script> <!-- pode ficar vazio por enquanto -->
 </body>
+
 </html>
