@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Interativo - Fase 1</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+
+    <main class="container">
+        <header class="intro-section">
+            <h1>Bem-vindo ao Módulo 1</h1>
+            <p>Prepare-se para uma jornada de aprendizado. Assista ao briefing abaixo.</p>
+        </header>
+
+        <hr>
+
+        <section class="video-section">
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="comic-section">
+            <h2>A Missão Começa...</h2>
+            <div class="comic-container">
+                <div class="comic-page">
+                    <img src="https://placehold.co/600x400?text=HQ+Parte+1" alt="Primeira parte da história em quadrinhos">
+                </div>
+            </div>
+        </section>
+
+        <section class="game-section">
+            <h2>Desafio Prático</h2>
+            <p>Complete o desafio para descobrir o final da história!</p>
+
+            <div id="game-canvas">
+                <div class="game-placeholder">
+                    <p>🎮 Área do Jogo</p>
+                    <button id="btn-simulate-win" class="btn-primary">Simular Vitória (Dev)</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="locked-content" class="comic-section hidden">
+            <div class="unlock-animation">
+                <h2>🔓 Conteúdo Desbloqueado!</h2>
+                <div class="comic-container">
+                    <div class="comic-page">
+                        <img src="https://placehold.co/600x400/222/fff?text=HQ+Parte+2+(Segredo)" alt="Segunda parte da história em quadrinhos">
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-level-wrapper">
+                <a href="nivel-2.html" class="btn-next">Ir para o Próximo Nível 🚀</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="src/js/game.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>
