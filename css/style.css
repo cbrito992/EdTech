@@ -463,3 +463,17 @@ body {
      aspect-ratio: 2 / 3;
   }
 }
+
+/* =========================
+   Letra Capitular
+   ========================= */
+
+.capitular::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    margin-right: 0.5rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    font-family: 'Georgia', serif;
+}
