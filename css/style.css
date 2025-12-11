@@ -403,13 +403,29 @@ body {
     display: none;
 }
 
+/* =========================
+   HQ - CORRIGIDO PARA RESPONSIVIDADE
+   ========================= */
+
 .hq-container {
-  width: 600px;
-  height: 600px;
-  max-width: 100%; /* Responsividade para mobile */
-  margin: 0 auto;  /* Centraliza o componente na tela */
-  border: 0px solid #fff; /* Opcional: Borda para destacar a área */
-  box-shadow: 0 0 15px rgba(0,0,0,0.5); /* Um brilho/sombra para dar destaque */
+  width: 100%;             /* Ocupa a largura da tela no mobile */
+  max-width: 600px;        /* No PC, trava em 600px para não ficar gigante */
+
+  /* A MÁGICA: Aspect Ratio */
+  /* Cria uma caixa retangular vertical (estilo folha A4/HQ) automaticamente */
+  aspect-ratio: 3 / 4;
+  height: auto;            /* Deixa a altura se ajustar baseada na largura */
+
+  margin: 0 auto;          /* Centraliza o bloco na tela */
+  background: #000;        /* Fundo preto para sobras laterais (letterbox) */
+
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  border: var(--border-subtle);
+
+  /* Garante que nada vaze */
+  overflow: hidden;
+  position: relative;
 }
 
 .swiper-slide {
@@ -417,21 +433,33 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #000;
+  height: 100%; /* Garante que o slide ocupe a altura do container */
 }
 
 .swiper-slide img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+
+  /* O SEGREDO DA CENTRALIZAÇÃO */
+  object-fit: contain;  /* Mostra a imagem INTEIRA sem cortar nada */
+
+  /* Remove propriedades desnecessárias em img (flexbox não se usa direto na img) */
 }
 
-/* Customização "Game" básica nas setas (ficam brancas) */
+/* Ajuste das setas para não cobrirem o texto no celular */
 .swiper-button-next, .swiper-button-prev {
-  color: #fff;
+  color: var(--color-accent); /* Usa o dourado do seu tema */
+  transform: scale(0.7);      /* Deixa as setas menores e mais discretas */
+  text-shadow: 0 0 5px #000;  /* Sombra para ler a seta em cima de imagens claras */
 }
-.swiper-pagination-bullet-active {
-  background: #fff;
+
+/* =========================
+   AJUSTE FINO MOBILE
+   ========================= */
+@media (max-width: 480px) {
+  .hq-container {
+     /* No celular, pode ser um pouco mais alto para aproveitar a tela vertical */
+     aspect-ratio: 2 / 3;
+  }
 }
