@@ -117,18 +117,26 @@
         </section>
         <!-- GAME -->
         <section id="game" class="card">
-            <h2>Desafio interativo</h2>
-            <p>Em breve aqui entra o jogo em HTML. Por enquanto, use o botão abaixo para simular que venceu o desafio.
-            </p>
+            <h2>Nível 1: Investigação Preliminar</h2>
+            <p>O personagem corre automaticamente. Pressione <strong>ESPAÇO</strong> para pular obstáculos e pegar o anel dourado!</p>
+            <p>Use as setas Cima e Baixo para selecionar as opções das perguntas e Enter para responder</p>
 
-            <div class="game-area">
-                <div class="game-placeholder">
-                    <p> Área do Jogo </p>
-                    <button id="btn-simulate-win" class="btn-primary">
-                        Simular vitória (dev)
-                    </button>
-                </div>
+            <div class="container-jogo" style="
+        width: 100%;
+        max-width: 800px; /* Tamanho máximo para não ficar gigante */
+        margin: 20px auto; /* Centraliza na tela */
+        aspect-ratio: 16/9; /* Força o formato retangular correto */
+        position: relative;
+        background: #000;
+        border: 4px solid #333;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);">
+
+                <iframe id="frameJogo" src="/games/library-runner/index.html" width="100%" height="100%"
+                    style="border: none; display: block;" scrolling="no" allowfullscreen>
+                </iframe>
+
             </div>
+
         </section>
 
         <!-- RECOMPENSA / HQ 2 -->
@@ -162,6 +170,19 @@
     </button>
 
     <!-- JS -->
+
+    <script>// Função que o jogo vai chamar quando o jogador vencer
+        window.liberarProximoNivel = function () {
+            console.log("Sinal recebido do jogo: Vitória!");
+
+            // 1. Feedback Visual
+            alert("Parabéns! Você concluiu o desafio da biblioteca!");
+
+            // 2. Ação do Site (Ex: Liberar botão ou salvar no banco)
+            // Aqui você pode chamar sua API Java/Spring futuramente
+            document.getElementById("botao-proxima-fase").disabled = false;
+            document.getElementById("botao-proxima-fase").innerText = "Próximo Módulo (Liberado)";
+        };</script>
     <script src="/js/main.js"></script>
     <script src="/js/game.js"></script> <!-- pode ficar vazio por enquanto -->
 
