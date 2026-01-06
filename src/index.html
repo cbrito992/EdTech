@@ -36,7 +36,8 @@
             <h1>Curso de Interpretação Textual – Nível 1</h1>
             <p>Bem-vindo! Aqui você vai treinar leitura, compreensão e interpretação de textos de forma leve e prática.
             </p>
-            <p>Assista ao vídeo, leia a HQ e realize o desafio para desbloquear os próximos níveis e a continuação da história.
+            <p>Assista ao vídeo, leia a HQ e realize o desafio para desbloquear os próximos níveis e a continuação da
+                história.
             </p>
         </section>
 
@@ -89,20 +90,53 @@
             </div>
         </section>
 
+        <!-- Texto Básico -->
+        <section class="card">
+            <h3> As Luzes que ninguém viu </h3>
+
+            <p class="capitular" ::first-letter> A </p>
+            <p>biblioteca da escola estava quase fechando quando Maya percebeu um papel dobrado dentro do livro que
+                acabara de pegar. Um papel gasto, escrito à mão, deixando no ar uma sensação de urgência improvisada. No
+                bilhete, apenas uma frase:</p>
+
+            <blockquote class="note-box">“Se você viu as luzes, não ignore.”</blockquote>
+
+            <p>Ela sentiu um arrepio incômodo. Na noite anterior, viera para casa e viu três riscos brilhantes cruzando
+                o céu. Silenciosos, rápidos, como algo que poderia ser explicado…, mas não facilmente. Em toda a escola,
+                ninguém mencionou nada. Nem uma postagem, nem um comentário apressado. Nada.</p>
+
+            <p> Maya chamou Lucas, que fingia estudar enquanto jogava no celular. Ele leu o bilhete, franziu o rosto e,
+                meio hesitante, disse que “provavelmente foi drone”. Mas o tom dele não convencia nem a si mesmo.
+                Foi quando Ravi apareceu, do nada, como sempre.
+                Sem tirar o fone, disse apenas:</p>
+            <p>— Eu também vi.</p>
+            O mundo, naquele instante, pareceu se ajeitar de um jeito estranho. Agora eram três testemunhas, e um
+            bilhete que sabia disso antes deles admitirem.
+            Tudo ali pedia interpretação — não apenas das palavras, mas das intenções por trás delas. </p>
+
+        </section>
         <!-- GAME -->
         <section id="game" class="card">
-            <h2>Desafio interativo</h2>
-            <p>Em breve aqui entra o jogo em HTML. Por enquanto, use o botão abaixo para simular que venceu o desafio.
-            </p>
+            <h2>Nível 1: Investigação Preliminar</h2>
+            <p>O personagem corre automaticamente. Pressione <strong>ESPAÇO</strong> para pular obstáculos e pegar o anel dourado!</p>
+            <p>Use as setas Cima e Baixo para selecionar as opções das perguntas e Enter para responder</p>
 
-            <div class="game-area">
-                <div class="game-placeholder">
-                    <p> Área do Jogo </p>
-                    <button id="btn-simulate-win" class="btn-primary">
-                        Simular vitória (dev)
-                    </button>
-                </div>
+            <div class="container-jogo" style="
+        width: 100%;
+        max-width: 800px; /* Tamanho máximo para não ficar gigante */
+        margin: 20px auto; /* Centraliza na tela */
+        aspect-ratio: 16/9; /* Força o formato retangular correto */
+        position: relative;
+        background: #000;
+        border: 4px solid #333;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);">
+
+                <iframe id="frameJogo" src="/games/library-runner/index.html" width="100%" height="100%"
+                    style="border: none; display: block;" scrolling="no" allowfullscreen>
+                </iframe>
+
             </div>
+
         </section>
 
         <!-- RECOMPENSA / HQ 2 -->
@@ -136,6 +170,19 @@
     </button>
 
     <!-- JS -->
+
+    <script>// Função que o jogo vai chamar quando o jogador vencer
+        window.liberarProximoNivel = function () {
+            console.log("Sinal recebido do jogo: Vitória!");
+
+            // 1. Feedback Visual
+            alert("Parabéns! Você concluiu o desafio da biblioteca!");
+
+            // 2. Ação do Site (Ex: Liberar botão ou salvar no banco)
+            // Aqui você pode chamar sua API Java/Spring futuramente
+            document.getElementById("botao-proxima-fase").disabled = false;
+            document.getElementById("botao-proxima-fase").innerText = "Próximo Módulo (Liberado)";
+        };</script>
     <script src="/js/main.js"></script>
     <script src="/js/game.js"></script> <!-- pode ficar vazio por enquanto -->
 
