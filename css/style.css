@@ -1,479 +1,702 @@
-/* =========================
-   BASE
-   ========================= */
-
-
-       /* =========================
-   EFEITO FILM GRAIN (RUÍDO)
-   ========================= */
-
-/* A "película" de filme sobre a tela */
-body::before {
-    content: "";
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: 0; /* Fica acima de tudo */
-    pointer-events: none; /* Permite clicar nos elementos abaixo */
-
-    /* Gera o ruído via SVG embutido */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
-
-    /* Opacidade: Controle a intensidade aqui */
-    /* 0.05 = sutil | 0.08 = perceptível | 0.15 = filme velho estragado */
-    opacity: 0.07;
-
-    /* Animação que move o ruído para parecer vivo */
-    animation: grain 7s steps(10) infinite;
-}
-
-/* Faz o ruído pular aleatoriamente */
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
-}
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
+/* Reset e Variaveis */
 :root {
-    /* PALETA NOIR */
-    --bg-body: #050505;        /* Preto quase absoluto */
-    --bg-card: #121212;        /* Cinza chumbo escuro */
-    --bg-card-soft: #1c1c1c;   /* Gradiente sutil para o card */
-
-    --color-text: #e0e0e0;     /* Branco "prata" (menos cansativo que branco puro) */
-    --color-muted: #888888;    /* Cinza médio para textos secundários */
-
-    /* ACENTO: Dourado Pálido (Champanhe) - Clássico Noir */
-    /* Opção alternativa: #cdcdcd (Prata) ou #a82e2e (Sangue seco) */
-    --color-accent: #d4b483;
-
-    --radius-card: 4px;        /* Bordas mais retas combinam mais com Noir/Jornais antigos */
-    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.95); /* Sombras muito pesadas e marcantes */
-    --border-subtle: 1px solid rgba(255, 255, 255, 0.08); /* Bordas finas para separar o escuro do escuro */
-
-    --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-texto: 'Source Serif 4', Georgia, "Times New Roman", serif;
+    --bg-color: #F9F9F9;
+    --text-color: #333333;
+    --header-bg: #FFFFFF;
+    --primary-color: #2D9CDB; /* Azul didatico */
+    --success-color: #27AE60;
+    --error-color: #EB5757;
+    --card-bg: #FFFFFF;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
-    min-height: 100vh;
-    font-family: var(--font-texto);
-    font-size: 1rem;
+    padding: 0;
     line-height: 1.6;
-    color: var(--color-text);
-
-    /* Efeito de "Holofote" ou iluminação de rua em noite chuvosa */
-    background:
-        radial-gradient(circle at 50% 0%, #2a2a2a 0, transparent 70%),
-        #050505;
 }
 
-/* =========================
-   CONTAINER
-   ========================= */
-
-.container.app-shell {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 4.5rem 1.5rem 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-
-    position: relative;
-    z-index: 1; /* Garante que o conteúdo fique acima do ruído */
-}
-
-/* =========================
-   CARDS
-   ========================= */
-
-.card {
-    background: linear-gradient(160deg, var(--bg-card), var(--bg-card-soft));
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-soft);
-    border: var(--border-subtle); /* Adicionado borda para definição */
-    padding: 1.75rem 1.5rem;
-}
-
-.card h2 {
+/* Títulos dos Destaques sempre em Azul */
+.story-highlight h3 {
+    color: var(--primary-color);
     margin-top: 0;
-    margin-bottom: 0.8rem;
-    font-family: var(--font-ui);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--color-text);
-    text-transform: uppercase; /* Toque de manchete de jornal */
-    letter-spacing: 0.05em;
+    margin-bottom: 10px;
 }
 
-/* Intro com destaque */
-.intro-card {
-    text-align: left;
-    border-left: 4px solid var(--color-accent); /* Detalhe lateral elegante */
-}
-
-.intro-card h1 {
-    margin: 0 0 0.8rem;
-    font-family: var(--font-ui);
-    font-weight: 700;
-    font-size: 1.9rem;
-    color: #fff; /* Título principal mais brilhante */
-}
-
-.intro-card p {
-    margin: 0 0 0.6rem;
-    color: var(--color-muted);
-}
-
-/* =========================
-   NAVBAR MINI
-   ========================= */
-
-.site-header-mini {
-    position: fixed;
+/* Navbar Limpa */
+nav {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-
-    padding-block: clamp(0.25rem, 0.5vw, 0.45rem);
-    background: rgba(5, 5, 5, 0.85); /* Fundo mais escuro */
-    backdrop-filter: blur(8px) grayscale(100%); /* Blur + Grayscale para garantir ausência de cor */
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 100;
 }
 
-.mini-nav {
-    max-width: 960px;
-    margin: 0 auto;
-    padding-inline: 0.75rem;
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
 
+.nav-links {
+    list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.35rem 0.6rem;
+    gap: 20px;
 }
 
-.mini-item {
-    padding-block: clamp(0.2rem, 0.4vw, 0.35rem);
-    padding-inline: clamp(0.6rem, 1vw, 0.9rem);
-
-    border-radius: 2px; /* Menos arredondado */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-
-    font-family: var(--font-ui);
-    font-size: clamp(0.75rem, 0.3vw + 0.75rem, 0.85rem);
-    font-weight: 500;
-    color: var(--color-muted); /* Texto padrão mais apagado */
+/* Links da Navbar - SEMPRE CLICÁVEIS E LIVRES */
+.nav-links a {
     text-decoration: none;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    color: #666;
+    font-weight: 500;
+    transition: all 0.3s ease;
 
-    transition: all 0.2s ease;
+    /* Prepara para o quadrado */
+    padding: 8px 16px; /* Espaço interno para criar o formato */
+    border-radius: 4px; /* Levemente arredondado nas pontas */
+    border: 1px solid transparent; /* Borda invisível para não pular no hover */
 }
 
-.mini-item:hover {
-    background: var(--color-text);
-    color: #000; /* Inversão de cor dramática (texto preto no fundo branco) */
-    border-color: var(--color-text);
-    transform: translateY(-1px);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+/* Hover simples (passar o mouse) */
+.nav-links a:hover {
+    color: var(--primary-color);
+    background-color: rgba(45, 156, 219, 0.05); /* Fundo azul bem clarinho */
 }
 
-/* =========================
-   VÍDEO
-   ========================= */
+/* CLASSE ACTIVE (O Quadrado com Brilho) */
+.nav-links a.active {
+    color: var(--primary-color);
+    font-weight: bold;
+
+    /* Borda sólida da cor do tema */
+    border: 1px solid var(--primary-color);
+
+    /* O Brilho (Glow) */
+    box-shadow: 0 0 10px rgba(45, 156, 219, 0.4);
+
+    /* Fundo sutil */
+    background-color: rgba(45, 156, 219, 0.1);
+}
+
+/* --- BARRA DE PROGRESSO GLOBAL --- */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    position: sticky;
+    top: 72px;
+    z-index: 98;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--success-color) 100%);
+    width: 0%;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 4px 4px 0;
+    position: relative;
+}
+
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 5px;
+    background-color: #fff;
+    opacity: 0.5;
+    box-shadow: 0 0 10px #fff;
+}
+
+/* Containers */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Cabecalhos de Nivel */
+.level-header {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.level-header h1 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.level-badge {
+    background-color: #E0F7FA;
+    color: #006064;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Conteudo de Leitura */
+.reading-content {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.story-highlight {
+    background-color: #FFF8E1;
+    padding: 15px;
+    border-left: 4px solid #FFC107;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* HQ Section */
+.hq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+    align-items: center;
+}
+
+.hq-image {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Area de Quiz */
+.quiz-section {
+    margin-top: 40px;
+}
+
+.question-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.option-btn {
+    padding: 12px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.option-btn:hover {
+    background-color: #e9ecef;
+}
+
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.option-btn.incorrect {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.feedback-msg {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    display: none;
+}
+
+/* Botao de Proximo Nivel */
+.next-level-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.btn-next {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.btn-next.unlocked {
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 4px 15px rgba(45, 156, 219, 0.4);
+}
+
+/* Rodape */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
+}
+
+/* Área de Vídeo */
+.video-section {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.video-section h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 .video-wrapper {
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: var(--radius-card);
+    padding-bottom: 56.25%;
+    height: 0;
     overflow: hidden;
-    background: #000;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background-color: #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.video-wrapper iframe {
+.video-wrapper iframe,
+.video-wrapper video {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    filter: sepia(20%) contrast(110%); /* Efeito de filme levemente antigo */
+    border: none;
 }
 
-/* =========================
-   HQ
-   ========================= */
-
-.comic-wrapper {
-    margin-top: 0.75rem;
-    border-radius: var(--radius-card);
+/* --- CARROSSEL --- */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    height: 500px;
+    background-color: #ddd;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    border: var(--border-subtle);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================
-   GAME
-   ========================= */
-
-.game-area {
-    margin-top: 0.75rem;
-    border-radius: var(--radius-card);
-    padding: 1.5rem;
-    background: radial-gradient(circle, #222 0%, #000 100%); /* Vinheta escura */
-    border: 1px dashed var(--color-muted);
+.carousel-track-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-.game-placeholder {
-    text-align: center;
-    font-family: var(--font-ui);
-    color: var(--color-muted);
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
 }
 
-/* =========================
-   BOTÕES
-   ========================= */
-
-.btn-primary,
-.btn-next {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-
-    padding: 0.6rem 1.6rem;
-    border-radius: 2px; /* Botão mais quadrado */
-    border: 1px solid var(--color-accent); /* Borda visível */
-
-    font-family: var(--font-ui);
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-
-    background: transparent; /* Fundo transparente estilo Ghost Button */
-    color: var(--color-accent);
-
-    cursor: pointer;
-    text-decoration: none;
-
-    transition: all 0.2s ease;
-    box-shadow: none;
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 }
 
-.btn-primary:hover,
-.btn-next:hover {
-    background: var(--color-accent);
-    color: #120420; /* Texto escuro no fundo dourado */
-    transform: translateY(-1px);
-    box-shadow: 0 0 15px rgba(212, 180, 131, 0.3); /* Brilho suave */
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f4f1ea;
 }
 
-.btn-primary:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    border-color: var(--color-muted);
-    color: var(--color-muted);
-}
-
-/* =========================
-   UTILITÁRIOS
-   ========================= */
-
-.hidden {
-    display: none;
-}
-
-/* =========================
-   RESPONSIVIDADE (Mantida igual, apenas ajustes de raio)
-   ========================= */
-
-@media (max-width: 768px) {
-
-    .container.app-shell {
-        padding: 4rem 1rem 2.5rem;
-        gap: 1.4rem;
-    }
-
-    .card {
-        padding: 1.4rem 1.15rem;
-        border-radius: 8px;
-    }
-
-    .intro-card h1 {
-        font-size: 1.6rem;
-    }
-
-    .card h2 {
-        font-size: 1.25rem;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .container.app-shell {
-        padding: 3.6rem 0.8rem 2.5rem;
-    }
-
-    .card {
-        padding: 1.3rem 1rem;
-        border-radius: 8px;
-    }
-
-    .intro-card h1 {
-        font-size: 1.4rem;
-    }
-
-    .card h2 {
-        font-size: 1.15rem;
-    }
-}
-    /* =========================
-   PLAYER DE MÚSICA
-   ========================= */
-
-.music-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99999; /* Fica acima do ruído e do conteúdo */
-
-    width: 50px;
-    height: 50px;
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 1px solid var(--color-accent);
-
-    background: rgba(18, 4, 32, 0.8); /* Fundo escuro semitransparente */
-    color: var(--color-accent);
-
     cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    transition: background 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.music-toggle:hover {
-    transform: scale(1.1);
-    background: var(--color-accent);
-    color: var(--bg-body); /* Inverte a cor no hover */
-    box-shadow: 0 0 20px rgba(212, 180, 131, 0.4);
+.carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+.btn-left { left: 15px; }
+.btn-right { right: 15px; }
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    z-index: 10;
 }
 
-.music-toggle svg {
-    width: 24px;
-    height: 24px;
+.carousel-indicator {
+    border: none;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
 }
 
-/* Animação de "onda" quando está tocando */
-.playing-pulse {
-    animation: pulse-gold 2s infinite;
+.carousel-indicator.current-slide {
+    background: var(--primary-color);
+    transform: scale(1.2);
 }
 
-@keyframes pulse-gold {
-    0% { box-shadow: 0 0 0 0 rgba(212, 180, 131, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(212, 180, 131, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(212, 180, 131, 0); }
+@media (max-width: 600px) {
+    .carousel-container { height: 300px; }
 }
 
-.hidden {
+/* --- CERTIFICADO --- */
+.cert-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.input-area {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group { text-align: left; }
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-field {
+    padding: 12px;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.btn-generate {
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+.btn-generate:hover { background-color: #219150; }
+
+#certificate-box {
+    display: none;
+    background: #fff;
+    padding: 60px;
+    border: 1px solid #ddd;
+    position: relative;
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+#certificate-box::before {
+    content: "";
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 5px double var(--primary-color);
+    pointer-events: none;
+}
+
+.cert-header { margin-bottom: 40px; }
+.cert-logo-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.cert-title {
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+.cert-body {
+    font-size: 1.3rem;
+    line-height: 2;
+    margin: 50px 0;
+    text-align: justify;
+}
+.highlight-data {
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding: 0 5px;
+}
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 80px;
+    padding: 0 40px;
+}
+.signature-block { text-align: center; }
+.signature-line {
+    border-top: 1px solid #333;
+    width: 250px;
+    margin-bottom: 10px;
+}
+.signature-role {
+    font-size: 0.9rem;
+    color: #666;
+    font-family: 'Segoe UI', sans-serif;
+}
+.date-block {
+    text-align: right;
+    font-size: 1rem;
+}
+
+.btn-print {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
     display: none;
 }
+.btn-print:hover { background-color: #000; }
 
-/* =========================
-   HQ - CORRIGIDO PARA RESPONSIVIDADE
-   ========================= */
+/* --- CORREÇÃO DA IMPRESSÃO (Salvar PDF) --- */
+@media print {
+    @page {
+        size: landscape; /* Força paisagem */
+        margin: 0;
+    }
 
-.hq-container {
-  width: 100%;             /* Ocupa a largura da tela no mobile */
-  max-width: 600px;        /* No PC, trava em 600px para não ficar gigante */
+    body {
+        background: white;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact; /* Força cores de fundo no Chrome */
+    }
 
-  /* A MÁGICA: Aspect Ratio */
-  /* Cria uma caixa retangular vertical (estilo folha A4/HQ) automaticamente */
-  aspect-ratio: 3 / 4;
-  height: auto;            /* Deixa a altura se ajustar baseada na largura */
+    /* Esconde tudo que não é o certificado */
+    nav, footer, .input-area, .btn-print, .progress-container, .page-loader, .cert-header-info {
+        display: none !important;
+    }
 
-  margin: 0 auto;          /* Centraliza o bloco na tela */
-  background: #000;        /* Fundo preto para sobras laterais (letterbox) */
+    .cert-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
 
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-soft);
-  border: var(--border-subtle);
+    /* Força o certificado a aparecer */
+    #certificate-box {
+        display: block !important;
+        visibility: visible !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh; /* Ocupa a altura da folha */
+        margin: 0 !important;
+        border: 10px solid #fff; /* Pequena margem branca */
+        box-shadow: none;
+        box-sizing: border-box;
+    }
 
-  /* Garante que nada vaze */
-  overflow: hidden;
-  position: relative;
+    /* Ajuste da borda ornamental na impressão */
+    #certificate-box::before {
+        top: 10px; left: 10px; right: 10px; bottom: 10px;
+    }
 }
 
-.swiper-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  height: 100%; /* Garante que o slide ocupe a altura do container */
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Navbar vira coluna */
+    nav {
+        flex-direction: column; /* Empilha logo e links */
+        padding: 1rem;
+        gap: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-direction: column; /* Empilha os botões */
+        align-items: center;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .nav-links li {
+        width: 100%; /* Ocupa a largura toda */
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block; /* Botão grande fácil de tocar */
+        width: 100%;
+        box-sizing: border-box; /* Garante que padding não estoure a largura */
+    }
+
+    /* 2. Ajuste da Barra de Progresso */
+    .progress-container {
+        top: 130px; /* Desce a barra pois a navbar ficou mais alta */
+    }
+
+    /* 3. Containers e Textos */
+    .container {
+        margin: 20px auto; /* Menos margem */
+        padding: 0 15px;
+    }
+
+    .reading-content,
+    .level-header {
+        padding: 20px; /* Menos padding interno para ganhar espaço */
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+
+    /* 4. Carrossel menor no celular */
+    .carousel-container {
+        height: 250px; /* Altura reduzida para não ocupar a tela toda */
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    /* 5. Vídeo Responsivo */
+    .video-wrapper {
+        padding-bottom: 56.25%; /* Mantém proporção 16:9 */
+    }
+
+    /* 6. Certificado Responsivo */
+    .cert-title {
+        font-size: 1.8rem;
+    }
+
+    .cert-body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .cert-footer {
+        flex-direction: column; /* Assinatura e data empilhados */
+        align-items: center;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .signature-block, .date-block {
+        text-align: center;
+    }
 }
 
-.swiper-slide img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-
-  /* O SEGREDO DA CENTRALIZAÇÃO */
-  object-fit: contain;  /* Mostra a imagem INTEIRA sem cortar nada */
-
-  /* Remove propriedades desnecessárias em img (flexbox não se usa direto na img) */
+/* --- CAIXA DE HISTÓRIA AZUL (PADRÃO) --- */
+.story-box {
+    background-color: #f0f4f8; /* O fundo azulzinho */
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color); /* A borda lateral azul */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    line-height: 1.8;
 }
 
-/* Ajuste das setas para não cobrirem o texto no celular */
-.swiper-button-next, .swiper-button-prev {
-  color: var(--color-accent); /* Usa o dourado do seu tema */
-  transform: scale(0.7);      /* Deixa as setas menores e mais discretas */
-  text-shadow: 0 0 5px #000;  /* Sombra para ler a seta em cima de imagens claras */
-}
-
-/* =========================
-   AJUSTE MOBILE
-   ========================= */
-@media (max-width: 480px) {
-  .hq-container {
-     /* No celular, pode ser um pouco mais alto para aproveitar a tela vertical */
-     aspect-ratio: 2 / 3;
-  }
-}
-
-/* =========================
-   Letra Capitular
-   ========================= */
-
-.capitular::first-letter {
-    float: left;
-    font-size: 3.5rem;
-    line-height: 0.8;
-    margin-right: 0.5rem;
-    font-weight: bold;
-    color: var(--color-accent);
-    font-family: 'Georgia', serif;
+.story-box h2,
+.story-box h3 {
+    margin-top: 0;
+    color: var(--primary-color);
 }

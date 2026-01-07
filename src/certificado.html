@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado de Conclusão | EdTech</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+
+    <nav>
+        <div class="logo">EdTech Trilha de Leitura</div>
+        <ul class="nav-links">
+            <li><a href="/src/index.html">Voltar</a></li>
+        </ul>
+    </nav>
+
+    <div class="cert-wrapper">
+
+        <div class="input-area" id="form-section">
+            <h2 style="color: var(--primary-color);">Emitir Certificado</h2>
+            <p>Insira seus dados para gerar seu certificado.</p>
+
+            <div class="input-group">
+                <label for="studentName">Nome Completo:</label>
+                <input type="text" id="studentName" class="input-field" placeholder="Ex: João da Silva" required>
+            </div>
+
+            <div class="input-group">
+                <label for="studentCPF">CPF:</label>
+                <input type="text" id="studentCPF" class="input-field" placeholder="000.000.000-00" required>
+            </div>
+
+            <button class="btn-generate" onclick="generateCertificate()">Gerar Certificado</button>
+        </div>
+
+        <div id="certificate-box">
+            <div class="cert-header">
+                <div class="cert-logo-text">EdTech Educacional</div>
+                <h1 class="cert-title">Certificado de Conclusão</h1>
+            </div>
+
+            <div class="cert-body">
+                <p>
+                    Certificamos que <span id="display-name" class="highlight-data">NOME DO ALUNO</span>,
+                    inscrito(a) no CPF sob o nº <span id="display-cpf" class="highlight-data">000.000.000-00</span>,
+                    concluiu com êxito o <strong>Curso de Nivelamento - Interpretação Textual</strong>,
+                    realizado na modalidade a distância, com carga horária total de
+                    <strong>40 horas</strong>.
+                </p>
+            </div>
+
+            <div class="cert-footer">
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <div class="signature-role">Diretoria Pedagógica<br>EdTech Educacional</div>
+                </div>
+
+                <div class="date-block">
+                    <p>Blumenau, <span id="display-date">DD de Mês de AAAA</span>.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-print" id="btn-print" onclick="window.print()">Imprimir PDF</button>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 EdTech - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+
+</body>
+</html>
