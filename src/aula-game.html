@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minigame Passarinho Entrelinhas Adventure</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Garante que o corpo da página ocupe tudo */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .game-container {
+            /* Flexbox para centralizar PERFEITAMENTE */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centraliza na Horizontal */
+            justify-content: center;
+            /* Centraliza na Vertical */
+
+            /* Garante que o container pegue a tela toda */
+            width: 100%;
+            min-height: 100vh;
+            /* Altura total da tela */
+
+            background-color: #222;
+            padding: 20px;
+            box-sizing: border-box;
+            /* Evita que o padding estoure a tela */
+        }
+
+        .game-frame {
+            /* Tamanho EXATO das suas Rooms (1280x720) */
+            width: 1280px;
+            height: 720px;
+
+            /* Mantém a proporção correta se a tela for menor */
+            max-width: 100%;
+            aspect-ratio: 1280 / 720;
+
+            /* Visual */
+            border: 4px solid #ffd700;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            background: #000;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .game-instructions {
+            margin-top: 25px;
+            color: #ddd;
+            text-align: center;
+            font-family: sans-serif;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class="game-container">
+        <h1 style="color: white; margin-bottom: 20px;">Vamos Jogar!</h1>
+
+        <iframe src="/games/EntreLinhasGame/index.html" class="game-frame" title="Jogo Passarinho Entrelinhas Adventure"
+            scrolling="no">
+        </iframe>
+
+        <div class="game-instructions">
+            <h3>Como Jogar:</h3>
+            <p>Use as <strong>Setas</strong> para mover e pular. Colete os ovos e responda corretamente para avançar.
+            </p>
+            <p><em>Dica: Se o jogo não carregar o som, clique na tela do jogo uma vez.</em></p>
+        </div>
+    </main>
+
+    <script>
+        // Carrega a navbar dinamicamente
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>

@@ -1,208 +1,220 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nivelamento Interpretação Textual</title>
-
+    <title>Nível Básico - Observação | EdTech</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Fontes opcionais -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/vitru-ico.png">
 </head>
 
 <body>
 
-    <!-- NAVBAR SIMPLES -->
-    <header class="site-header-mini">
-        <nav class="mini-nav">
-            <a href="#intro" class="mini-item">Início</a>
-            <a href="#video" class="mini-item">Vídeo</a>
-            <a href="#comic" class="mini-item">HQ</a>
-            <a href="#game" class="mini-item">Jogo</a>
-            <a href="#reward" class="mini-item">Recompensa</a>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo">EdTech | Curso de Nivelamento</div>
+        <ul class="nav-links">
+            <li><a href="/src/index.html" class="active">Básico</a></li>
+            <li><a href="/src/intermediario.html">Intermediário</a></li>
+            <li><a href="/src/avancado.html">Avançado</a></li>
+            <li><a href="aula-game.html" style="color: gold; font-weight: bold;">Minigame</a></li>
+            <li id="nav-cert-item" style="display: none;">
+                <a href="/src/certificado.html" style="color: var(--success-color); font-weight: bold;">Certificado</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header class="level-header">
+            <span class="level-badge">Nível 1</span>
+            <h1>Observação e Identificação</h1>
+            <i>Jornada começa aqui. O foco é observar o que está explícito.</i>
+        </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="container app-shell">
+        <section>
+            <div class="reading-content">
 
-        <!-- INTRO -->
-        <section id="intro" class="card intro-card">
-            <h1>Curso de Interpretação Textual – Nível 1</h1>
-            <p>Bem-vindo! Aqui você vai treinar leitura, compreensão e interpretação de textos de forma leve e prática.
-            </p>
-            <p>Assista ao vídeo, leia a HQ e realize o desafio para desbloquear os próximos níveis e a continuação da
-                história.
-            </p>
+                <h2>Seja bem-vindo!</h2>
+                <p>Este curso foi desenvolvido para capacitá-lo na interpretação textual, por meio de conteúdos
+                    dialógicos, atuais e conectados com os desafios reais da leitura e da compreensão de textos.</p>
+                <p>Para obter seu certificado, assista aos vídeos de cada nível e responda às atividades propostas.</p>
         </section>
 
-        <!-- VÍDEO -->
-        <section id="video" class="card">
-            <h2>Vídeo de Apresentação</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/ysd26gO6HIU" title="Briefing do curso" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
+        <section class="reading-content">
+
+            <h2>Introdução</h2>
+
+            <p>Neste nível básico, vamos desenvolver habilidades essenciais para a interpretação de textos simples,
+                focando na compreensão literal e identificação de informações explícitas. Este é o ponto de partida para
+                construir uma base sólida.</p>
+            <p>Interpretar um texto não é só decifrar palavras no papel. É perceber pistas, entender o que está dito e,
+                às vezes, notar o que ficou escondido.</p>
+
+
+            <div class="video-section">
+
+                <h3> Aula de Interpretação Textual - Nível Básico</h3>
+
+                <p> Assista ao vídeo abaixo para entender os conceitos básicos de observação em textos.</p>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" title="Vídeo Aula Nível Básico"
+                        allowfullscreen></iframe>
+                </div>
             </div>
-        </section>
 
-        <!-- HQ / TEXTO -->
-        <section id="comic" class="card">
-            <h2>Tudo começa em uma noite comum...</h2>
-            <p>Leia a primeira parte da história em quadrinhos. Ela traz o contexto da missão que você precisa cumprir.
+
+            <p> Acompanhe a leitura da HQ e do fragmento de texto e descubra o segredo por trás das luzes misteriosas.
             </p>
 
-            <div class="swiper mySwiper hq-container">
-                <div class="swiper-wrapper">
 
-                    <div class="swiper-slide">
-                        <img src="/assets/hq-parte-cena1.jpg" alt="HQ Página 1">
-                    </div>
+            <div class="story-highlight">
+                <h3>As Luzes Que Ninguém Viu - Parte 1</h3>
+                <p>Acompanhe a história abaixo. Use as setas para navegar pelos quadros.</p>
+            </div>
 
-                    <div class="swiper-slide">
-                        <img src="/assets/hq-parte-cena2.jpg" alt="HQ Página 2">
-                    </div>
+            <div class="carousel-container">
 
-                    <div class="swiper-slide">
-                        <img src="/assets/hq-parte-cena3.jpg" alt="HQ Página 3">
-                    </div>
+                <button class="carousel-btn btn-left is-hidden">❮</button>
 
-                    <div class="swiper-slide">
-                        <img src="/assets/hq-parte-cena4.jpg" alt="HQ Página 4">
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img src="/assets/hq-parte-cena5.jpg" alt="HQ Página 5">
-                    </div>
-
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide">
+                            <img src="/assets/hq-parte-cena1.jpg" alt="Cena 1" class="carousel-image">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="/assets/hq-parte-cena2.jpg" alt="Cena 2" class="carousel-image">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="/assets/hq-parte-cena3.jpg" alt="Cena 3" class="carousel-image">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="/assets/hq-parte-cena4.jpg" alt="Cena 4" class="carousel-image">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="/assets/hq-parte-cena5.jpg" alt="Cena 5" class="carousel-image">
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <button class="carousel-btn btn-right">❯</button>
 
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-        <!-- Texto Básico -->
-        <section class="card">
-            <h3> As Luzes que ninguém viu </h3>
-
-            <p class="capitular" ::first-letter> A </p>
-            <p>biblioteca da escola estava quase fechando quando Maya percebeu um papel dobrado dentro do livro que
-                acabara de pegar. Um papel gasto, escrito à mão, deixando no ar uma sensação de urgência improvisada. No
-                bilhete, apenas uma frase:</p>
-
-            <blockquote class="note-box">“Se você viu as luzes, não ignore.”</blockquote>
-
-            <p>Ela sentiu um arrepio incômodo. Na noite anterior, viera para casa e viu três riscos brilhantes cruzando
-                o céu. Silenciosos, rápidos, como algo que poderia ser explicado…, mas não facilmente. Em toda a escola,
-                ninguém mencionou nada. Nem uma postagem, nem um comentário apressado. Nada.</p>
-
-            <p> Maya chamou Lucas, que fingia estudar enquanto jogava no celular. Ele leu o bilhete, franziu o rosto e,
-                meio hesitante, disse que “provavelmente foi drone”. Mas o tom dele não convencia nem a si mesmo.
-                Foi quando Ravi apareceu, do nada, como sempre.
-                Sem tirar o fone, disse apenas:</p>
-            <p>— Eu também vi.</p>
-            O mundo, naquele instante, pareceu se ajeitar de um jeito estranho. Agora eram três testemunhas, e um
-            bilhete que sabia disso antes deles admitirem.
-            Tudo ali pedia interpretação — não apenas das palavras, mas das intenções por trás delas. </p>
-
-        </section>
-        <!-- GAME -->
-        <section id="game" class="card">
-            <h2>Nível 1: Investigação Preliminar</h2>
-            <p>O personagem corre automaticamente. Pressione <strong>ESPAÇO</strong> para pular obstáculos e pegar o anel dourado!</p>
-            <p>Use as setas Cima e Baixo para selecionar as opções das perguntas e Enter para responder</p>
-
-            <div class="container-jogo" style="
-        width: 100%;
-        max-width: 800px; /* Tamanho máximo para não ficar gigante */
-        margin: 20px auto; /* Centraliza na tela */
-        aspect-ratio: 16/9; /* Força o formato retangular correto */
-        position: relative;
-        background: #000;
-        border: 4px solid #333;
-        box-shadow: 0 0 15px rgba(0,0,0,0.3);">
-
-                <iframe id="frameJogo" src="/games/library-runner/index.html" width="100%" height="100%"
-                    style="border: none; display: block;" scrolling="no" allowfullscreen>
-                </iframe>
-
+                <div class="carousel-nav">
+                    <button class="carousel-indicator current-slide"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                </div>
             </div>
 
-        </section>
+            <div class="story-text">
+                <p>A biblioteca estava quase fechando, aquele momento estranho em que as luzes ainda estão acesas, mas o
+                    silêncio parece maior do que deveria, quando Maya percebeu que tinha algo dentro do livro que
+                    acabara de pegar. Não era marca-página. Não era propaganda de cursinho. Era um papel dobrado, meio
+                    amassado, com tinta azul que parecia ter sido passada rápido, sem muito carinho pela caligrafia.</p>
 
-        <!-- RECOMPENSA / HQ 2 -->
-        <section id="reward" class="card hidden">
-            <h2>Próximo nível desbloqueado!</h2>
-            <p>Parabéns! Você concluiu o desafio e desbloqueou a continuação da história.</p>
+                <p>Ela abriu no impulso, sem pensar duas vezes.</p>
 
-            <div class="comic-wrapper">
-                <img src="https://placehold.co/800x450/222/fff?text=HQ+Parte+2" alt="Segunda parte da HQ (secreta)">
+                <p><em>“Se você viu as luzes, não ignore.”</em></p>
+
+                <p>Só isso.</p>
+
+                <p>Uma frase curta, escrita como quem pretende ser direto…, mas não claro.</p>
+
+                <p>Maya ficou com aquela sensação estranha de quando <em>alguma coisa faz sentido demais e nenhum
+                        sentido ao mesmo tempo.</em> Ontem à noite, indo para casa, ela tinha visto três riscos
+                    brilhantes cortando o céu. Duraram pouquíssimos segundos — o tipo de coisa que você até duvida se
+                    realmente aconteceu.</p>
+
+                <p>O problema é que ninguém comentou nada na escola. <em>Como se ela tivesse imaginado.</em></p>
+
+                <p>Só que agora tinha um bilhete dizendo exatamente aquilo.</p>
+
+                <p>Ela olhou para o lado. Lucas estava na mesa ao lado, cabeça baixa, fingindo que estudava, mas
+                    claramente jogando no celular.</p>
+
+                <p>— Lucas — ela chamou, baixinho, porque a bibliotecária tinha aquele talento sobrenatural de aparecer
+                    do nada. — Vem ver isso.</p>
+
+                <p>Ele veio com aquela expressão clássica de “deve ser bobagem, mas vou fingir interesse”.</p>
+
+                <p>— Ah, não. Se for outra teoria sua…</p>
+
+                <p>— Lê.</p>
+
+                <p>— Tá, tá.</p>
+
+                <p>Ele leu. E franziu o rosto devagar, como se estivesse tentando fazer pose de detetive.</p>
+
+                <p>— As luzes?</p>
+
+                <p>— As de ontem.</p>
+
+                <p>— Maya, aquilo foi… sei lá. Drone?</p>
+
+                <p>— Lucas. <em>Eu sei o que eu vi.</em></p>
+
+                <p>Antes que a discussão virasse aquela mesma conversa de sempre, Ravi apareceu atrás dos dois. Não
+                    fazia barulho nenhum para chegar — ele simplesmente surgia, como se tivesse vindo pela
+
             </div>
 
-            <a href="#" class="btn-next">Ir para o próximo nível</a>
         </section>
 
-    </main>
+        <section class="quiz-section" id="quiz-basic">
+            <h2>Desafio de Observação - </h2>
 
+            <div class="question-card" data-correct="2">
+                <h3>1. Quem são os personagens principais identificados nesta cena?</h3>
+                <div class="options-container">
+                    <button class="option-btn" data-index="0">A) Personagens secundários que aparecem
+                        raramente.</button>
+                    <button class="option-btn" data-index="1">B) Apenas os vilões da história.</button>
+                    <button class="option-btn" data-index="2">C) Os protagonistas e personagens centrais (Maya, Lucas,
+                        Ravi).</button>
+                </div>
+                <div class="feedback-msg"></div>
+            </div>
 
-    <audio id="bgMusic" loop>
-        <source src="/assets/trilha-noir.mp3" type="audio/mpeg">
-    </audio>
+            <div class="question-card" data-correct="0">
+                <h3>2. Qual é o problema ou situação apresentada no texto?</h3>
+                <div class="options-container">
+                    <button class="option-btn" data-index="0">A) O conflito central gerado pelo bilhete e as luzes
+                        misteriosas.</button>
+                    <button class="option-btn" data-index="1">B) A descrição detalhada do funcionamento da
+                        biblioteca.</button>
+                    <button class="option-btn" data-index="2">C) Conversas paralelas entre alunos que não participam da
+                        história.</button>
+                </div>
+                <div class="feedback-msg"></div>
+            </div>
 
-    <button id="musicBtn" class="music-toggle" title="Trilha Sonora">
-        <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 2.75 2.75 0 010-3.896.75.75 0 001.06-1.06 4.25 4.25 0 000-6.012.75.75 0 01-.06-1.06z" />
-        </svg>
-        <svg class="icon-mute hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM17.78 9.22a.75.75 0 10-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 101.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 101.06-1.06L20.56 12l1.72-1.72a.75.75 0 10-1.06-1.06l-1.72 1.72-1.72-1.72z" />
-        </svg>
-    </button>
+            <div class="question-card" data-correct="1">
+                <h3>3. Onde e quando acontece a história?</h3>
+                <div class="options-container">
+                    <button class="option-btn" data-index="0">A) Em um corredor cheio de alunos no meio da
+                        manhã.</button>
+                    <button class="option-btn" data-index="1">B) Na biblioteca da escola, no final do dia.</button>
+                    <button class="option-btn" data-index="2">C) Em uma sala de aula cheia, durante o horário de
+                        aula.</button>
+                </div>
+                <div class="feedback-msg"></div>
+            </div>
 
-    <!-- JS -->
+        </section>
 
-    <script>// Função que o jogo vai chamar quando o jogador vencer
-        window.liberarProximoNivel = function () {
-            console.log("Sinal recebido do jogo: Vitória!");
+        <div class="next-level-container">
+            <a href="/src/intermediario.html" class="btn-next" id="btn-next-level">Ir para Nível Intermediário</a>
+            <p id="progress-msg" style="margin-top:10px; font-size:0.9rem; color:#888;">Responda às questões para
+                avançar.</p>
+        </div>
+    </div>
 
-            // 1. Feedback Visual
-            alert("Parabéns! Você concluiu o desafio da biblioteca!");
+    <footer>
+        <p>&copy; 2026 EdTech - Curso de Nivelamento de Interpretação Textual </p>
+    </footer>
 
-            // 2. Ação do Site (Ex: Liberar botão ou salvar no banco)
-            // Aqui você pode chamar sua API Java/Spring futuramente
-            document.getElementById("botao-proxima-fase").disabled = false;
-            document.getElementById("botao-proxima-fase").innerText = "Próximo Módulo (Liberado)";
-        };</script>
     <script src="/js/main.js"></script>
-    <script src="/js/game.js"></script> <!-- pode ficar vazio por enquanto -->
-
-    <!-- Swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards", /* Dica: Tente mudar para 'slide', 'fade' ou 'cube' se quiser outro efeito */
-            grabCursor: true, /* O cursor vira uma mãozinha (interatividade) */
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
 </body>
 
 </html>
